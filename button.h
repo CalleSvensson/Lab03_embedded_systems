@@ -2,7 +2,7 @@
 #define _BUTTON_H_
 
 void button_init(void);
-void button_click(void);
+void button_click(int *state);
 void button_print(void);
 
 #endif

@@ -15,17 +15,18 @@ void button_init()
 	DDRD &= ~(1 << PD2); // PD2 button input
 }
 
-void button_click()
+void button_click(int *state)
 {
 	if (PIND & (1 << PD2))
 	{
 		buttonState = true;
-		button_print();
+		//button_print();
 	}
 	else
 	{
 		buttonState = false;
-		button_print();
+		if (buttonState == false && lastButtonState == true) *state+=1;
+		//button_print();
 	}
 	lastButtonState = buttonState;
 }
@@ -40,4 +41,3 @@ void button_print()
 		printf_P(PSTR("released\r\n"));
 	}
 }
-
